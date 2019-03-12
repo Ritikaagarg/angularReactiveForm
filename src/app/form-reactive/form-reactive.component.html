@@ -1,0 +1,71 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <h1>EMPLOYEE REGISTRATION</h1>
+  <label>
+    Name:
+    <input type="text" formControlName="firstName" placeholder="Enter name" >
+  </label>
+  <div *ngIf="fcontrol.firstName.invalid && submitted" class="alert alert-danger">
+      <div *ngIf="fcontrol.firstName.errors.required">
+          Name is required.
+      </div>
+  </div>
+
+  <label>
+    Email:
+    <input type="email" formControlName="email" placeholder="Enter email-id">
+  </label>
+  <div *ngIf="fcontrol.email.invalid && submitted" class="alert alert-danger">
+      <div *ngIf="fcontrol.email.errors.email">
+          Enter valid Email ID.
+      </div>
+  </div>
+
+  <label>
+    Phone No.:</label>
+    <span><input type="text" formControlName="prefix" class="prefix"></span>
+    <input type="tel" formControlName = "PhoneNo" placeholder="Enter phone no.">
+    <div *ngIf="fcontrol.PhoneNo.invalid && submitted" class="alert alert-danger">
+        <div *ngIf="fcontrol.PhoneNo.errors.minlength || fcontrol.PhoneNo.errors.maxlength">
+            Contact Number should be of 10 digits.
+        </div>
+        <div *ngIf="fcontrol.PhoneNo.errors.pattern">
+          It should be in digits.
+        </div>
+    </div>
+
+  <div formGroupName="address">
+    <h3>Address</h3>
+
+    <label>
+      Street:
+      <input type="text" formControlName="street" placeholder="Enter Street no.">
+    </label>
+
+    <label>
+      City:
+      <input type="text" formControlName="city" placeholder="Enter city">
+    </label>
+    
+    <label>
+      State:
+      <input type="text" formControlName="state" placeholder="Enter state">
+    </label>
+
+    <label>
+      Zip Code:
+      <input type="text" formControlName="zip" placeholder="Enter zipcode">
+    </label>
+    <div *ngIf="fcontrol.address.controls.zip.invalid && submitted" class="alert alert-danger">
+        <div *ngIf="fcontrol.address.controls.zip.errors.minlength || fcontrol.address.controls.zip.errors.maxlength">
+            Contact Number should be of 10 digits.
+        </div>
+        <div *ngIf="fcontrol.address.controls.zip.errors.pattern">
+          It should be in digits.
+        </div>
+    </div>
+
+  </div>
+
+  <button type="submit" [disabled]="!fcontrol.firstName.valid" >Submit</button>
+</form>
+
