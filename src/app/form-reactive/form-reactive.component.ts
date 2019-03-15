@@ -12,7 +12,7 @@ export class FormReactiveComponent {
 
   profileForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
-    email: new FormControl('',Validators.email),
+    email: new FormControl('',Validators.pattern(/^[\w-]+@([\w-]+\.)+[\w-]+$/)),
     prefix: new FormControl('+91'),
     PhoneNo: new FormControl('',[Validators.minLength(10),Validators.maxLength(10),Validators.pattern('[0-9]+')]),
     address: new FormGroup({
