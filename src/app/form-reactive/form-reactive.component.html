@@ -15,7 +15,7 @@
     <input type="email" formControlName="email" placeholder="Enter email-id">
   </label>
   <div *ngIf="fcontrol.email.invalid && submitted" class="alert alert-danger">
-      <div *ngIf="fcontrol.email.errors.email">
+      <div *ngIf="fcontrol.email.errors.pattern">
           Enter valid Email ID.
       </div>
   </div>
